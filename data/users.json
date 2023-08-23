@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "zakaria",
+    "last_name": "raji",
+    "email": "zakariaraji@zkr.fr",
+    "password": "Great)ne"
+  },
+  {
+    "id": 2,
+    "name": "James",
+    "last_name": "BBrown",
+    "email": "brown@zkr.fr",
+    "password": "Great)ne"
+  }
+]
