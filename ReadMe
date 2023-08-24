@@ -1,0 +1,54 @@
+# Examination project : Restful API
+
+This is a little Docs explaining the project's main pillars.
+<br>Please note that the data is saved directly into a local file inside the folder `/data`
+
+## Project Structure : MVC (no views)
+
+The project is organized into the following directories: (only user's example)
+
+### Controllers
+
+- **controllers/UserController.js:** Contains the logic for handling user-related routes and interactions with the model.
+
+### Models
+
+- **models/UserModel.js:** Defines the User model that represents user data. It interacts with the data stored in the `data/users.json` file.
+
+### Routes
+
+- **routes/UserRoute.js:** Defines routes for user-related operations, utilizing the `userController` and applying validation using `express-validator`. Please note that validators are some sorts of middleware ==> verification functions (verifyAuth, verifyToken...)
+
+### Data
+
+- **data/users.json:** A JSON file where user data is stored. The `userModel` reads and writes data to this file.
+
+### Validators
+
+- **validators/UserValidator.js:** Defines validation rules for user-related routes using `express-validator`. These rules are used to validate incoming request data.
+
+## How to Run the Project
+
+1. Navigate to the project directory: `cd xxxx`
+2. Install dependencies: `npm install`
+3. Start the application: `npm start`
+
+## Usage
+
+The project follows the MVC pattern to organize code and responsibilities. It focuses on API-based interactions without views.
+
+### Controllers
+
+Controllers in the `controllers` directory contain route handlers and business logic. They use the `express-validator` library to validate incoming request data.
+
+### Models
+
+Models in the `models` directory define data structures and interact with data sources. In this project, the `userModel` handles user-related data operations.
+
+### Data
+
+The `data/users.json` file stores user data in JSON format. The `userModel` reads from and writes to this file.
+
+### Validators
+
+The `validators/userValidator.js` file defines validation rules for user-related routes using `express-validator`.
