@@ -4,7 +4,8 @@
     "name": "zakaria",
     "last_name": "raji",
     "email": "zakariaraji@zkr.fr",
-    "password": "Great)ne"
+    "password": "Great)ne",
+    "tasks": [2]
   },
   {
     "id": 2,

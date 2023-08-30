@@ -10,4 +10,8 @@ router.delete('/:id', controller.deleteByPk)
 router.post('/', userRules.registration, controller.create)
 router.put('/:id', controller.update)
 
+//assign task to user
+router.put('/:id/assign', userRules.assignOrRemoveTask, controller.assignTask)
+router.put('/:id/remove', userRules.assignOrRemoveTask, controller.removeTask)
+
 module.exports = router

@@ -2,6 +2,11 @@
 
 This is a little Docs explaining the project's main pillars.
 <br>Please note that the data is saved directly into a local file inside the folder `/data`
+<br>To consume the API resources a password is required in the header of the request :
+
+```
+"x-password" : "IAI2"
+```
 
 ## Project Structure : MVC (no views)
 
@@ -39,7 +44,7 @@ The project follows the MVC pattern to organize code and responsibilities. It fo
 
 ### Controllers
 
-Controllers in the `controllers` directory contain route handlers and business logic. They use the `express-validator` library to validate incoming request data.
+Controllers in the `controllers` directory contain route handlers and business logic. They use the `joi` library to validate incoming request data.
 
 ### Models
 
@@ -51,4 +56,30 @@ The `data/users.json` file stores user data in JSON format. The `userModel` read
 
 ### Validators
 
-The `validators/userValidator.js` file defines validation rules for user-related routes using `express-validator`.
+The `validators/userValidator.js` file defines validation rules for user-related routes using `joi`.
+
+### Note :
+
+in our case we didn't sanitize the body which means everything sent from the client will be saved in our file , as a result we can use in the controller a sanitizer :
+
+```
+// Remove attributes that are not required
+const validatedKeys = ['title', 'dateStart', 'dateEnd']; // Add required attributes here
+
+const sanitizedBody = {};
+for (const key of validatedKeys) {
+if (req.body.hasOwnProperty(key)) {
+sanitizedBody[key] = req.body[key];
+}
+}
+```
+
+Or we can select only the attributes required
+
+```
+ const id = parseInt(req.params.id)
+ //const updatedData = req.body
+ //const updatedTask = await model.updateTask(id, updatedData)
+ const {dateEnd, etc}
+ const updatedTask = await model.updateTask(id,  {dateEnd, etc})
+```

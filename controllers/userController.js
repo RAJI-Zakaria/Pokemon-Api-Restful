@@ -1,4 +1,4 @@
-const model = require('../models/UserModel')
+const model = require('../models/userModel')
 
 const { validationResult } = require('express-validator')
 
@@ -61,6 +61,35 @@ controller.getAllUsers = async (req, res) => {
   const users = await model.getAllUsers()
 
   res.json(users)
+}
+
+//functions : assignTask and removeTask
+controller.assignTask = async (req, res) => {
+  const id = parseInt(req.params.id)
+  const taskId = parseInt(req.body.taskId)
+  const updatedUser = await model.updateUserAssignTask(id, taskId)
+
+  if (!updatedUser) {
+    return res.status(404).json({
+      error:
+        'something went wrong : Maybe the task has been already set or task not found',
+    })
+  }
+
+  res.json(updatedUser)
+}
+controller.removeTask = async (req, res) => {
+  const id = parseInt(req.params.id)
+  const taskId = parseInt(req.body.taskId)
+  const updatedUser = await model.updateUserRemoveTask(id, taskId)
+  console.log('user controller ', updatedUser)
+  if (!updatedUser) {
+    return res.status(404).json({
+      error: 'something went wrong : Maybe the task has been already removed',
+    })
+  }
+
+  res.json(updatedUser)
 }
 
 module.exports = controller

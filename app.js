@@ -3,13 +3,18 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const userRoute = require('./routes/userRoute')
+const apiRoutes = require('./routes')
 const port = 3000
 //add json parser middleware for parsing request bodies into JSON objects.
 app.use(bodyParser.json())
 
+const verifyAuth = require('./middleware/verifyAuth')
+
+//check the req.body.password ===> look at the config file
+app.use(verifyAuth)
+
 //add user route
-app.use('/user', userRoute)
+app.use('/api', apiRoutes)
 
 //start server
 app.listen(port, () => {
