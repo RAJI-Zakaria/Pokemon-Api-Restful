@@ -8,6 +8,23 @@ This is a little Docs explaining the project's main pillars.
 "x-password" : "IAI2"
 ```
 
+## Unit Testing : Jest & Supertest
+
+```
+describe('GET /api/user', () => {
+ it('Correct password & list of users [] :: 200 success', async () => {
+    // Correct x-password header provided
+    const res = await request(app)
+      .get('/api/user')
+      .set('x-password', correctPassword)
+    expect(res.statusCode).toBe(200)
+    expect(res.body).toBeInstanceOf(Array)
+    expect(res.body.length).toBeGreaterThan(0)
+  })
+  //.....Rest of the code.....//
+})
+```
+
 ## Project Structure : MVC (no views)
 
 The project is organized into the following directories: (only user's example)

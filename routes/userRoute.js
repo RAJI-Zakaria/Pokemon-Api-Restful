@@ -14,4 +14,7 @@ router.put('/:id', controller.update)
 router.put('/:id/assign', userRules.assignOrRemoveTask, controller.assignTask)
 router.put('/:id/remove', userRules.assignOrRemoveTask, controller.removeTask)
 
+//get all tasks of the user
+router.get('/:id/tasks', controller.getAllTasks)
+
 module.exports = router

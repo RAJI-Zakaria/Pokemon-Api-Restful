@@ -148,4 +148,36 @@ model.updateUserRemoveTask = async (id, taskId) => {
   return updatedUser
 }
 
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+
+model.getAllTasks = async (id) => {
+  const users = readUserData()
+  const userIndex = users.findIndex((p) => p.id === id)
+  if (userIndex === -1) {
+    return null
+  }
+  //if the tasks array is undefined then init
+  if (!users[userIndex].tasks) {
+    users[userIndex].tasks = []
+  }
+  //get the tasks
+  const tasksIds = users[userIndex].tasks
+  //read all tasks title from tasks.json
+  const tasksTitle = []
+  tasksIds.forEach((taskId) => {
+    //tasks is loaded from tasks.json
+    const taskIndex = tasks.findIndex((p) => p.id === taskId)
+    console.log(tasks)
+    tasksTitle.push(tasks[taskIndex].title)
+  })
+
+  // const userTasks = {
+  //   ...users[userIndex],
+  //   tasks: tasksTitle,
+  // }
+  return tasksTitle
+}
+
 module.exports = model

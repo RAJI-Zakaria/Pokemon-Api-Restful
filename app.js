@@ -4,7 +4,6 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const apiRoutes = require('./routes')
-const port = 3000
 //add json parser middleware for parsing request bodies into JSON objects.
 app.use(bodyParser.json())
 
@@ -16,7 +15,4 @@ app.use(verifyAuth)
 //add user route
 app.use('/api', apiRoutes)
 
-//start server
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`)
-})
+module.exports = app

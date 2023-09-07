@@ -92,4 +92,15 @@ controller.removeTask = async (req, res) => {
   res.json(updatedUser)
 }
 
+//get all user's tasks :
+controller.getAllTasks = async (req, res) => {
+  const id = parseInt(req.params.id)
+  const tasks = await model.getAllTasks(id)
+  console.log('tasks', tasks)
+  if (!tasks) {
+    return res.status(404).json({ error: 'User not found' })
+  }
+  res.send(tasks)
+}
+
 module.exports = controller
