@@ -110,26 +110,4 @@ The `validators/userValidator.js` file defines validation rules for user-related
 
 ### Note :
 
-in our case we didn't sanitize the body which means everything sent from the client will be saved in our file , as a result we can use in the controller a sanitizer :
-
-```
-// Remove attributes that are not required
-const validatedKeys = ['title', 'dateStart', 'dateEnd']; // Add required attributes here
-
-const sanitizedBody = {};
-for (const key of validatedKeys) {
-if (req.body.hasOwnProperty(key)) {
-sanitizedBody[key] = req.body[key];
-}
-}
-```
-
-Or we can select only the attributes required
-
-```
- const id = parseInt(req.params.id)
- //const updatedData = req.body
- //const updatedTask = await model.updateTask(id, updatedData)
- const {dateEnd, etc}
- const updatedTask = await model.updateTask(id,  {dateEnd, etc})
-```
+Even if the client sends multiple pieces of information that are not required or optional, as specified in the `Joi` validator, the request will be refused immediately.
