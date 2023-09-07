@@ -5,12 +5,7 @@
     "last_name": "raji",
     "email": "zakariaraji@zkr.fr",
     "password": "Great)ne",
-    "tasks": [
-      2,
-      3,
-      1,
-      4
-    ]
+    "tasks": [2, 3, 1, 4]
   },
   {
     "id": 2,

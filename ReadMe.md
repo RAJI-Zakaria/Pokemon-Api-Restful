@@ -10,19 +10,52 @@ This is a little Docs explaining the project's main pillars.
 
 ## Unit Testing : Jest & Supertest
 
+All test files are inside the folder `/tests`.
+
 ```
-describe('GET /api/user', () => {
- it('Correct password & list of users [] :: 200 success', async () => {
-    // Correct x-password header provided
-    const res = await request(app)
-      .get('/api/user')
-      .set('x-password', correctPassword)
-    expect(res.statusCode).toBe(200)
-    expect(res.body).toBeInstanceOf(Array)
-    expect(res.body.length).toBeGreaterThan(0)
-  })
-  //.....Rest of the code.....//
-})
+ PASS  tests/user.test.js
+  User Endpoint Tests
+    GET /api/user
+      ✓ No password :: 400 error (29 ms)
+      ✓ Incorrect password :: 401 error (3 ms)
+      ✓ Get users list :: 200 success (9 ms)
+    POST /api/user
+      ✓ No password :: 400 error (3 ms)
+      ✓ Incorrect password :: 401 error (3 ms)
+      ✓ Create new user {valid password} :: 201 success (37 ms)
+      ✓ No password :: 400 error (2 ms)
+      ✓ Incorrect password :: 401 error (2 ms)
+      ✓ Create new user {password is not valid} :: 400 success (5 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        0.839 s, estimated 1 s
+Ran all test suites.
+```
+
+### Unit Test Result Example :
+
+```
+  PASS  tests/user.test.js
+  User Endpoint Tests
+    GET /api/user
+      ✓ get :: No password :: 400 error (27 ms)
+      ✓ get :: Incorrect password :: 401 error (4 ms)
+      ✓ get :: Get users list :: 200 success (9 ms)
+    POST /api/user
+      ✓ post :: No password :: 400 error (3 ms)
+      ✓ post :: Incorrect password :: 401 error (3 ms)
+      ✓ post :: Create new user {valid password} :: 201 success (37 ms)
+      ✓ post :: No password :: 400 error (4 ms)
+      ✓ post :: Incorrect password :: 401 error (3 ms)
+      ✓ post :: Create new user {password is not valid} :: 400 success (5 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        0.923 s, estimated 1 s
+Ran all test suites.
 ```
 
 ## Project Structure : MVC (no views)
